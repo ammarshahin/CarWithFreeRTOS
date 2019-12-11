@@ -9,6 +9,7 @@
 /************************************************************************/
 /*                        Files Includes                                */
 /************************************************************************/
+#include <PWMCar.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include "tm4c123gh6pm.h"
@@ -25,16 +26,14 @@
 #include "hw_gpio.h"
 #include "pin_map.h"
 #include "DC_Motor.h"
-//#include "Ultrasonic.h"
 #include "CarControl.h"
 /************************************************************************/
 /*                         Macros and Defines                           */
 /************************************************************************/
-#define SLOW_SPEED 30
-#define FAST_SPEED 100
-#define NORMAL_SPEED 50
+#define SLOW_SPEED 99
+#define NORMAL_SPEED 99
 
-#define CAUTIOUS_DISTANCE 40
+#define CAUTIOUS_DISTANCE 10
 #define DENGEROUS_DISTANCE 20
 /************************************************************************/
 /*                        Functions Definitions                         */
@@ -47,10 +46,12 @@
  */
 void Car_Init(void)
 {
+    PWM_Init();
+
     DC_Motor_Init(DC_MOTOR_CHANNEL_0);
     DC_Motor_Init(DC_MOTOR_CHANNEL_1);
 
-    Move_Forward();
+    CarMove__Forward();
 }
 
 
@@ -61,63 +62,62 @@ void Car_Init(void)
  */
 void CarControlLogic( uint32_t ultrasonicDistanc)
 {
-    if(ultrasonicDistanc > CAUTIOUS_DISTANCE) /* No obstacle Go Forward */
+    if ( (ultrasonicDistanc < CAUTIOUS_DISTANCE) && (ultrasonicDistanc > DENGEROUS_DISTANCE) )  /* Obstacle on the near range */
 	{
-		Move_Forward();
-		DC_Motor_Set_Speed(FAST_SPEED);
-	}
-	else if ( (ultrasonicDistanc < CAUTIOUS_DISTANCE) && (ultrasonicDistanc > DENGEROUS_DISTANCE) )  /* Obstacle on the near range */
-	{
-		Move_RotateRight();
-		DC_Motor_Set_Speed(NORMAL_SPEED);
+        CarMove__RotateRight();
+		DC_Motor_Set_Speed(SLOW_SPEED);
 	}
 	else if(ultrasonicDistanc < DENGEROUS_DISTANCE)  /* Obstacle is very near go back till an enough range to rotate */
 	{
+		CarMove__Backward();
 		DC_Motor_Set_Speed(SLOW_SPEED);
-		Move_Backward();
+	}
+	else
+	{
+	    CarMove__Forward();
+	    DC_Motor_Set_Speed(NORMAL_SPEED);
 	}
 }
 
 /**
- * Function : Move_Forward
- * Description: This function is to make car move forward
+ * Function : CarMove__Forward
+ * Description: This function is to make car CarMove_ forward
  *  it take nothing and returns nothing
  */
-
-void Move_Forward(void)
+void CarMove__Forward(void)
 {
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_FORWARD);
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_FORWARD);
 }
 
 /**
- * Function : Move_Backward
- * Description: This function is to make car move Backward
+ * Function : CarMove__Backward
+ * Description: This function is to make car CarMove_ Backward
  *  it take nothing and returns nothing
  */
-void Move_Backward(void)
+void CarMove__Backward(void)
 {
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_BACK);
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_BACK);
 }
 
 /**
- * Function : Move_RotateRight
+ * Function : CarMove__RotateRight
  * Description: This function is to make car Rotate Right
  *  it take nothing and returns nothing
  */
-void Move_RotateRight(void)
+void CarMove__RotateRight(void)
 {
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_BACK);
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_FORWARD);
 }
 
 /**
- * Function : move_RotateLeft
+ * Function : CarMove__RotateLeft
  * Description: This function is to make car Rotate Left
  *  it take nothing and returns nothing
  */
-void Move_RotateLeft(void)
+void CarMove__RotateLeft(void)
 {
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_FORWARD);
     DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_BACK);
@@ -129,17 +129,8 @@ void Move_RotateLeft(void)
  * Description: This function is to make car Stop
  *  it take nothing and returns nothing
  */
-
-void Stop(void)
+void CarStop(void)
 {
     DC_Motor_Stop(DC_MOTOR_CHANNEL_0);
     DC_Motor_Stop(DC_MOTOR_CHANNEL_1);
 }
-/*
-carLogic(ultrasonicDistanc);
-         DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_FORWARD);
-         DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_FORWARD);
-         vTaskDelay(500);
-         DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_0, DC_MOTOR_BACK);
-         //DC_Motor_Set_Direction(DC_MOTOR_CHANNEL_1, DC_MOTOR_BACK);
-*/

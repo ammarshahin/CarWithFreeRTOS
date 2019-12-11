@@ -8,7 +8,6 @@
 /************************************************************************/
 /*								INCLUDES						        */
 /************************************************************************/
-#include <PWM_t.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include "tm4c123gh6pm.h"
@@ -18,6 +17,7 @@
 #include "interrupt.h"
 #include "gpio.h"
 #include "timer.h"
+#include "PWM.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Tasks.h"
@@ -25,6 +25,8 @@
 #include "hw_gpio.h"
 #include "pin_map.h"
 #include "CarControl.h"
+#include "LCD.h"
+#include "Ultrasonic.h"
 
 /************************************************************************/
 /*								Defines  						        */
@@ -35,8 +37,10 @@
 /*					      Global Variables						        */
 /************************************************************************/
  TaskHandle_t Init_Task_Handle;
+ TaskHandle_t Ultarsonic_Task_Handle;
  TaskHandle_t CarTaskLogic_Handle;
 
+ volatile uint32_t ultrasonicDistanc;
 /************************************************************************/
 /*					      OS Tasks Implementations				        */
 /************************************************************************/
@@ -47,26 +51,20 @@
  */
  void Init_Task(void* pvParameters)
 {
-     PWM_Init();
-     //Ultrasonic_Init();
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
+     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+     //LCD_init();
+     initializeUltraSonic();
      Car_Init();
 
-     BaseType_t xReturned = false;
-
-    xReturned = xTaskCreate(CarTaskLogic,
-    "CarTaskLogic",
-    configMINIMAL_STACK_SIZE,
-    NULL,
-    CarTaskLogic_PRIORITY,
-    &CarTaskLogic_Handle
-    );
-
-    if( xReturned != pdPASS )
-    {
-         // Error Handling Code
-    }
+     //GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3); // Debug Led
 
     vTaskSuspend(Init_Task_Handle);
+
+    while(true)
+    {
+        // Never going to reach this line
+    }
 }
 
 /**
@@ -76,18 +74,22 @@
  */
  void CarTaskLogic(void* pvParameters)
 {
-     uint32_t ultrasonicDistanc = false;
 
      while(1)
      {
-         ultrasonicDistanc = 20;
          CarControlLogic(ultrasonicDistanc);
-         vTaskDelay(500);
+         vTaskDelay(200);
      }
-
 }
 
-void Timer0IntHandler(void)
-{
 
-}
+ void UltrasonicTask(void* pvParameters)
+ {
+     while(true)
+     {
+         triggerUltrasonic();
+         ultrasonicDistanc = calculateDistance();
+         LCD_DisplayNumber(ultrasonicDistanc);
+         vTaskDelay(100);
+     }
+ }

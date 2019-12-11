@@ -22,7 +22,7 @@
  * @param dutyCycle the duty cycle of the PWM in percentage
  * @param freq the frequency of the PWM in Hz
  */
-void PWM_Init();
+void PWM_Init(void);
 
 /**
  * Function :  PWM_PhaseCorrect

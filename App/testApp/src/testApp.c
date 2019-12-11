@@ -26,10 +26,10 @@
 /*				      Main Function Implementation			            */
 /************************************************************************/
 int main(void)
-{
+ {
        SysCtlClockSet(SYSCTL_SYSDIV_1|SYSCTL_USE_OSC|SYSCTL_OSC_INT);
 
-       //uint32_t x= SysCtlClockGet();
+       uint32_t x= SysCtlClockGet();
        BaseType_t xReturned = 0;
 
         xReturned = xTaskCreate(Init_Task,
@@ -44,6 +44,32 @@ int main(void)
         {
              // Error Handling Code
         }
+
+        xReturned = xTaskCreate(CarTaskLogic,
+        "CarTaskLogic",
+        configMINIMAL_STACK_SIZE,
+        NULL,
+        CarTaskLogic_PRIORITY,
+        &CarTaskLogic_Handle
+        );
+
+        if( xReturned != pdPASS )
+        {
+             // Error Handling Code
+        }
+
+        xReturned = xTaskCreate(UltrasonicTask,
+       "Ultarsonic Task",
+       configMINIMAL_STACK_SIZE,
+       NULL,
+       Ultarsonic_TASK_PRIORITY,
+       &Ultarsonic_Task_Handle
+       );
+
+       if( xReturned != pdPASS )
+       {
+            // Error Handling Code
+       }
 
         /* Start Scheduler */
         vTaskStartScheduler();

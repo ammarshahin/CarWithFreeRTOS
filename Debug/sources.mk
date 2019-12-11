@@ -115,7 +115,11 @@ SUBDIRS := \
 App/CarControl/src \
 App/testApp/src \
 Ecual/Dc_Motor/src \
+Ecual/Icu/src \
+Ecual/Lcd/src \
+Ecual/Ultrasonic/src \
 Firmware/FreeRtos/src \
+Mcal/Ext_Int/src \
 Mcal/PWM/src \
 Mcal/Tivaware/driverlib \
 Mcal/Tivaware/driverlib/ccs/Debug \

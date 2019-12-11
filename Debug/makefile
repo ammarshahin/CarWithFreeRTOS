@@ -15,13 +15,17 @@ ORDERED_OBJS += \
 "./App/testApp/src/Tasks.obj" \
 "./App/testApp/src/testApp.obj" \
 "./Ecual/Dc_Motor/src/DC_Motor.obj" \
+"./Ecual/Icu/src/Icu.obj" \
+"./Ecual/Lcd/src/lcd.obj" \
+"./Ecual/Ultrasonic/src/Ultrasonic.obj" \
 "./Firmware/FreeRtos/src/heap_1.obj" \
 "./Firmware/FreeRtos/src/list.obj" \
 "./Firmware/FreeRtos/src/port.obj" \
 "./Firmware/FreeRtos/src/portasm.obj" \
 "./Firmware/FreeRtos/src/queue.obj" \
 "./Firmware/FreeRtos/src/tasks.obj" \
-"./Mcal/PWM/src/PWM_t.obj" \
+"./Mcal/Ext_Int/src/Ext_Int.obj" \
+"./Mcal/PWM/src/PWM.obj" \
 "./Mcal/Tivaware/driverlib/adc.obj" \
 "./Mcal/Tivaware/driverlib/aes.obj" \
 "./Mcal/Tivaware/driverlib/can.obj" \
@@ -72,7 +76,11 @@ RMDIR := RMDIR /S/Q
 -include App/CarControl/src/subdir_vars.mk
 -include App/testApp/src/subdir_vars.mk
 -include Ecual/Dc_Motor/src/subdir_vars.mk
+-include Ecual/Icu/src/subdir_vars.mk
+-include Ecual/Lcd/src/subdir_vars.mk
+-include Ecual/Ultrasonic/src/subdir_vars.mk
 -include Firmware/FreeRtos/src/subdir_vars.mk
+-include Mcal/Ext_Int/src/subdir_vars.mk
 -include Mcal/PWM/src/subdir_vars.mk
 -include Mcal/Tivaware/driverlib/subdir_vars.mk
 -include Mcal/Tivaware/driverlib/ccs/Debug/subdir_vars.mk
@@ -83,7 +91,11 @@ RMDIR := RMDIR /S/Q
 -include App/CarControl/src/subdir_rules.mk
 -include App/testApp/src/subdir_rules.mk
 -include Ecual/Dc_Motor/src/subdir_rules.mk
+-include Ecual/Icu/src/subdir_rules.mk
+-include Ecual/Lcd/src/subdir_rules.mk
+-include Ecual/Ultrasonic/src/subdir_rules.mk
 -include Firmware/FreeRtos/src/subdir_rules.mk
+-include Mcal/Ext_Int/src/subdir_rules.mk
 -include Mcal/PWM/src/subdir_rules.mk
 -include Mcal/Tivaware/driverlib/subdir_rules.mk
 -include Mcal/Tivaware/driverlib/ccs/Debug/subdir_rules.mk
@@ -220,10 +232,10 @@ Car0.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "tm4c123gh6pm_startup_ccs.obj" "App\CarControl\src\CarControl.obj" "App\testApp\src\Tasks.obj" "App\testApp\src\testApp.obj" "Ecual\Dc_Motor\src\DC_Motor.obj" "Firmware\FreeRtos\src\heap_1.obj" "Firmware\FreeRtos\src\list.obj" "Firmware\FreeRtos\src\port.obj" "Firmware\FreeRtos\src\portasm.obj" "Firmware\FreeRtos\src\queue.obj" "Firmware\FreeRtos\src\tasks.obj" "Mcal\PWM\src\PWM_t.obj" "Mcal\Tivaware\driverlib\adc.obj" "Mcal\Tivaware\driverlib\aes.obj" "Mcal\Tivaware\driverlib\can.obj" "Mcal\Tivaware\driverlib\comp.obj" "Mcal\Tivaware\driverlib\cpu.obj" "Mcal\Tivaware\driverlib\crc.obj" "Mcal\Tivaware\driverlib\des.obj" "Mcal\Tivaware\driverlib\eeprom.obj" "Mcal\Tivaware\driverlib\emac.obj" "Mcal\Tivaware\driverlib\epi.obj" "Mcal\Tivaware\driverlib\epi_workaround_ccs.obj" "Mcal\Tivaware\driverlib\flash.obj" "Mcal\Tivaware\driverlib\fpu.obj" "Mcal\Tivaware\driverlib\gpio.obj" "Mcal\Tivaware\driverlib\hibernate.obj" "Mcal\Tivaware\driverlib\i2c.obj" "Mcal\Tivaware\driverlib\interrupt.obj" 
-	-$(RM) "Mcal\Tivaware\driverlib\lcd.obj" "Mcal\Tivaware\driverlib\mpu.obj" "Mcal\Tivaware\driverlib\onewire.obj" "Mcal\Tivaware\driverlib\pwm.obj" "Mcal\Tivaware\driverlib\qei.obj" "Mcal\Tivaware\driverlib\shamd5.obj" "Mcal\Tivaware\driverlib\ssi.obj" "Mcal\Tivaware\driverlib\sw_crc.obj" "Mcal\Tivaware\driverlib\sysctl.obj" "Mcal\Tivaware\driverlib\sysexc.obj" "Mcal\Tivaware\driverlib\systick.obj" "Mcal\Tivaware\driverlib\timer.obj" "Mcal\Tivaware\driverlib\uart.obj" "Mcal\Tivaware\driverlib\udma.obj" "Mcal\Tivaware\driverlib\usb.obj" "Mcal\Tivaware\driverlib\watchdog.obj" 
-	-$(RM) "tm4c123gh6pm_startup_ccs.d" "App\CarControl\src\CarControl.d" "App\testApp\src\Tasks.d" "App\testApp\src\testApp.d" "Ecual\Dc_Motor\src\DC_Motor.d" "Firmware\FreeRtos\src\heap_1.d" "Firmware\FreeRtos\src\list.d" "Firmware\FreeRtos\src\port.d" "Firmware\FreeRtos\src\queue.d" "Firmware\FreeRtos\src\tasks.d" "Mcal\PWM\src\PWM_t.d" "Mcal\Tivaware\driverlib\adc.d" "Mcal\Tivaware\driverlib\aes.d" "Mcal\Tivaware\driverlib\can.d" "Mcal\Tivaware\driverlib\comp.d" "Mcal\Tivaware\driverlib\cpu.d" "Mcal\Tivaware\driverlib\crc.d" "Mcal\Tivaware\driverlib\des.d" "Mcal\Tivaware\driverlib\eeprom.d" "Mcal\Tivaware\driverlib\emac.d" "Mcal\Tivaware\driverlib\epi.d" "Mcal\Tivaware\driverlib\flash.d" "Mcal\Tivaware\driverlib\fpu.d" "Mcal\Tivaware\driverlib\gpio.d" "Mcal\Tivaware\driverlib\hibernate.d" "Mcal\Tivaware\driverlib\i2c.d" "Mcal\Tivaware\driverlib\interrupt.d" "Mcal\Tivaware\driverlib\lcd.d" "Mcal\Tivaware\driverlib\mpu.d" "Mcal\Tivaware\driverlib\onewire.d" "Mcal\Tivaware\driverlib\pwm.d" "Mcal\Tivaware\driverlib\qei.d" 
-	-$(RM) "Mcal\Tivaware\driverlib\shamd5.d" "Mcal\Tivaware\driverlib\ssi.d" "Mcal\Tivaware\driverlib\sw_crc.d" "Mcal\Tivaware\driverlib\sysctl.d" "Mcal\Tivaware\driverlib\sysexc.d" "Mcal\Tivaware\driverlib\systick.d" "Mcal\Tivaware\driverlib\timer.d" "Mcal\Tivaware\driverlib\uart.d" "Mcal\Tivaware\driverlib\udma.d" "Mcal\Tivaware\driverlib\usb.d" "Mcal\Tivaware\driverlib\watchdog.d" 
+	-$(RM) "tm4c123gh6pm_startup_ccs.obj" "App\CarControl\src\CarControl.obj" "App\testApp\src\Tasks.obj" "App\testApp\src\testApp.obj" "Ecual\Dc_Motor\src\DC_Motor.obj" "Ecual\Icu\src\Icu.obj" "Ecual\Lcd\src\lcd.obj" "Ecual\Ultrasonic\src\Ultrasonic.obj" "Firmware\FreeRtos\src\heap_1.obj" "Firmware\FreeRtos\src\list.obj" "Firmware\FreeRtos\src\port.obj" "Firmware\FreeRtos\src\portasm.obj" "Firmware\FreeRtos\src\queue.obj" "Firmware\FreeRtos\src\tasks.obj" "Mcal\Ext_Int\src\Ext_Int.obj" "Mcal\PWM\src\PWM.obj" "Mcal\Tivaware\driverlib\adc.obj" "Mcal\Tivaware\driverlib\aes.obj" "Mcal\Tivaware\driverlib\can.obj" "Mcal\Tivaware\driverlib\comp.obj" "Mcal\Tivaware\driverlib\cpu.obj" "Mcal\Tivaware\driverlib\crc.obj" "Mcal\Tivaware\driverlib\des.obj" "Mcal\Tivaware\driverlib\eeprom.obj" "Mcal\Tivaware\driverlib\emac.obj" "Mcal\Tivaware\driverlib\epi.obj" "Mcal\Tivaware\driverlib\epi_workaround_ccs.obj" "Mcal\Tivaware\driverlib\flash.obj" "Mcal\Tivaware\driverlib\fpu.obj" "Mcal\Tivaware\driverlib\gpio.obj" 
+	-$(RM) "Mcal\Tivaware\driverlib\hibernate.obj" "Mcal\Tivaware\driverlib\i2c.obj" "Mcal\Tivaware\driverlib\interrupt.obj" "Mcal\Tivaware\driverlib\lcd.obj" "Mcal\Tivaware\driverlib\mpu.obj" "Mcal\Tivaware\driverlib\onewire.obj" "Mcal\Tivaware\driverlib\pwm.obj" "Mcal\Tivaware\driverlib\qei.obj" "Mcal\Tivaware\driverlib\shamd5.obj" "Mcal\Tivaware\driverlib\ssi.obj" "Mcal\Tivaware\driverlib\sw_crc.obj" "Mcal\Tivaware\driverlib\sysctl.obj" "Mcal\Tivaware\driverlib\sysexc.obj" "Mcal\Tivaware\driverlib\systick.obj" "Mcal\Tivaware\driverlib\timer.obj" "Mcal\Tivaware\driverlib\uart.obj" "Mcal\Tivaware\driverlib\udma.obj" "Mcal\Tivaware\driverlib\usb.obj" "Mcal\Tivaware\driverlib\watchdog.obj" 
+	-$(RM) "tm4c123gh6pm_startup_ccs.d" "App\CarControl\src\CarControl.d" "App\testApp\src\Tasks.d" "App\testApp\src\testApp.d" "Ecual\Dc_Motor\src\DC_Motor.d" "Ecual\Icu\src\Icu.d" "Ecual\Lcd\src\lcd.d" "Ecual\Ultrasonic\src\Ultrasonic.d" "Firmware\FreeRtos\src\heap_1.d" "Firmware\FreeRtos\src\list.d" "Firmware\FreeRtos\src\port.d" "Firmware\FreeRtos\src\queue.d" "Firmware\FreeRtos\src\tasks.d" "Mcal\Ext_Int\src\Ext_Int.d" "Mcal\PWM\src\PWM.d" "Mcal\Tivaware\driverlib\adc.d" "Mcal\Tivaware\driverlib\aes.d" "Mcal\Tivaware\driverlib\can.d" "Mcal\Tivaware\driverlib\comp.d" "Mcal\Tivaware\driverlib\cpu.d" "Mcal\Tivaware\driverlib\crc.d" "Mcal\Tivaware\driverlib\des.d" "Mcal\Tivaware\driverlib\eeprom.d" "Mcal\Tivaware\driverlib\emac.d" "Mcal\Tivaware\driverlib\epi.d" "Mcal\Tivaware\driverlib\flash.d" "Mcal\Tivaware\driverlib\fpu.d" "Mcal\Tivaware\driverlib\gpio.d" "Mcal\Tivaware\driverlib\hibernate.d" "Mcal\Tivaware\driverlib\i2c.d" "Mcal\Tivaware\driverlib\interrupt.d" "Mcal\Tivaware\driverlib\lcd.d" 
+	-$(RM) "Mcal\Tivaware\driverlib\mpu.d" "Mcal\Tivaware\driverlib\onewire.d" "Mcal\Tivaware\driverlib\pwm.d" "Mcal\Tivaware\driverlib\qei.d" "Mcal\Tivaware\driverlib\shamd5.d" "Mcal\Tivaware\driverlib\ssi.d" "Mcal\Tivaware\driverlib\sw_crc.d" "Mcal\Tivaware\driverlib\sysctl.d" "Mcal\Tivaware\driverlib\sysexc.d" "Mcal\Tivaware\driverlib\systick.d" "Mcal\Tivaware\driverlib\timer.d" "Mcal\Tivaware\driverlib\uart.d" "Mcal\Tivaware\driverlib\udma.d" "Mcal\Tivaware\driverlib\usb.d" "Mcal\Tivaware\driverlib\watchdog.d" 
 	-$(RM) "Mcal\Tivaware\driverlib\epi_workaround_ccs.d" 
 	-$(RM) "Firmware\FreeRtos\src\portasm.d" 
 	-@echo 'Finished clean'

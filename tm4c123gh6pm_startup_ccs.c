@@ -59,7 +59,8 @@ extern void xPortPendSVHandler(void);
 extern void vPortSVCHandler(void);
 extern void xPortSysTickHandler(void);
 
-void Timer0IntHandler(void);
+extern void PortAIntHandler(void) ;
+extern void Timer0Isr(void);
 
 //*****************************************************************************
 //
@@ -88,7 +89,7 @@ void (* const g_pfnVectors[])(void) =
     0,                                      // Reserved
     xPortPendSVHandler,                      // The PendSV handler
     xPortSysTickHandler,                      // The SysTick handler
-    IntDefaultHandler,                      // GPIO Port A
+    PortAIntHandler,                      // GPIO Port A
     IntDefaultHandler,                      // GPIO Port B
     IntDefaultHandler,                      // GPIO Port C
     IntDefaultHandler,                      // GPIO Port D
@@ -107,7 +108,7 @@ void (* const g_pfnVectors[])(void) =
     IntDefaultHandler,                      // ADC Sequence 2
     IntDefaultHandler,                      // ADC Sequence 3
     IntDefaultHandler,                      // Watchdog timer
-    Timer0IntHandler,                      // Timer 0 subtimer A
+    Timer0Isr        ,                      // Timer 0 subtimer A
     IntDefaultHandler,                      // Timer 0 subtimer B
     IntDefaultHandler,                      // Timer 1 subtimer A
     IntDefaultHandler,                      // Timer 1 subtimer B

@@ -10,7 +10,6 @@
 /************************************************************************/
 #include <stdint.h>
 #include <stdbool.h>
-#include "PWM_t.h"
 #include "tm4c123gh6pm.h"
 #include "hw_memmap.h"
 #include "hw_types.h"
@@ -23,12 +22,14 @@
 #include "pin_map.h"
 #include "hw_gpio.h"
 #include "pin_map.h"
+#include "PWMCar.h"
 #include "pwm.h"
+
 /************************************************************************/
 /*                           Macros and Defines                         */
 /************************************************************************/
-#define MAX_VALUE_PWM 20000
-#define ONE_HUNDERD 100
+#define MAX_VALUE_PWM   2000
+#define ONE_HUNDERD     100
 
 /************************************************************************/
 /*                        Functions Definitions                         */
@@ -40,7 +41,7 @@
  * @param freq the frequency of the PWM in Hz
  */
 
-void PWM_Init()
+void PWM_Init(void)
 {
 	//Configure PWM Clock to match system
       SysCtlPWMClockSet(SYSCTL_PWMDIV_16);
@@ -92,5 +93,4 @@ void PWM_SetDutyCycle( uint32_t dutycycle )
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, WidthSetValue);
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, WidthSetValue);
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, WidthSetValue);
-       //PWMPulseWidthSet(ui32Base, ui32PWMOut, ui32Width)
 }

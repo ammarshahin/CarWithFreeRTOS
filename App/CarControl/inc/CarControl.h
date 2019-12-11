@@ -30,39 +30,39 @@ void CarControlLogic( uint32_t ultrasonicDistanc);
 /*               Direction Control functions' Prototypes                */
 /************************************************************************/
 /**
- * Function : Move_Forward
- * Description: This function is to make car move forward
+ * Function : CarMove__Forward
+ * Description: This function is to make car CarMove_ forward
  *  it take nothing and returns nothing
  */
-void Move_Forward(void);
+void CarMove__Forward(void);
 
 /**
- * Function : Move_Backward
- * Description: This function is to make car move Backward
+ * Function : CarMove__Backward
+ * Description: This function is to make car CarMove_ Backward
  *  it take nothing and returns nothing
  */
-void Move_Backward(void);
+void CarMove__Backward(void);
 
 
 /**
- * Function : Move_RotateRight
+ * Function : CarMove__RotateRight
  * Description: This function is to make car Rotate Right
  *  it take nothing and returns nothing
  */
-void Move_RotateRight(void);
+void CarMove__RotateRight(void);
 
 /**
- * Function : move_RotateLeft
+ * Function : CarMove__RotateLeft
  * Description: This function is to make car Rotate Left
  *  it take nothing and returns nothing
  */
-void Move_RotateLeft(void);
+void CarMove__RotateLeft(void);
 
 /**
  * Function : Stop
  * Description: This function is to make car Stop
  *  it take nothing and returns nothing
  */
-void Stop(void);
+void CarStop(void);
 
 #endif /* CAR_CONTROL_H_ */

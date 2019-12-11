@@ -8,9 +8,9 @@
 /************************************************************************/
 /*				              Files Includes                            */
 /************************************************************************/
+
 #include <stdint.h>
 #include <stdbool.h>
-#include "PWM_t.h"
 #include "tm4c123gh6pm.h"
 #include "hw_memmap.h"
 #include "hw_types.h"
@@ -23,6 +23,7 @@
 #include "pin_map.h"
 #include "hw_gpio.h"
 #include "pin_map.h"
+#include "PWMCar.h"
 #include "DC_Motor.h"
 
 /************************************************************************/
@@ -47,13 +48,13 @@ void DC_Motor_Init( uint32_t Channel)
 	{
 		case DC_MOTOR_CHANNEL_0 : 
 			/* Initiate the Motor pin Direction */
-		    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-		    GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_0|GPIO_PIN_2);
+		    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+		    GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_0|GPIO_PIN_1);
 		break;
 		case DC_MOTOR_CHANNEL_1 : 
             /* Initiate the Motor pin Direction */
-            SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-            GPIOPinTypeGPIOOutput(GPIO_PORTD_BASE, GPIO_PIN_1|GPIO_PIN_3);
+            SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+            GPIOPinTypeGPIOOutput(GPIO_PORTB_BASE, GPIO_PIN_2|GPIO_PIN_3);
 		break;
 		default:
 		break;
@@ -95,13 +96,11 @@ void DC_Motor_Set_Direction(uint32_t Channel , uint32_t Direction)
 			{
 				case DC_MOTOR_FORWARD :
 					/* Set the Motor pin */
-				    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_2, 0x01);
-				    //GPIOPinWrite(GPIO_PORTD_BASE, , 0);
+				    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_0 | GPIO_PIN_1, 0x02);
 				break;
 				case DC_MOTOR_BACK : 
 					/* Set the Motor pin */
-				    GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_0 | GPIO_PIN_2, 0x04);
-				    //GPIOPinWrite(GPIO_PORTD_BASE, , 2);
+				    GPIOPinWrite(GPIO_PORTB_BASE, GPIO_PIN_0 | GPIO_PIN_1, 0x01);
 				break;
 				default:
 				break;
@@ -112,13 +111,11 @@ void DC_Motor_Set_Direction(uint32_t Channel , uint32_t Direction)
 			{
 				case DC_MOTOR_FORWARD :
 					/* Set the Motor pin */
-				    GPIOPinWrite(GPIO_PORTD_BASE,GPIO_PIN_3 | GPIO_PIN_1, 0x02);
-				    //GPIOPinWrite(GPIO_PORTD_BASE, , 4);
+				    GPIOPinWrite(GPIO_PORTB_BASE,GPIO_PIN_3 | GPIO_PIN_2, 0x08);
 				break;
 				case DC_MOTOR_BACK :
 					/* Set the Motor pin */
-				    GPIOPinWrite(GPIO_PORTD_BASE,GPIO_PIN_3 | GPIO_PIN_1, 0x08);
-				    //GPIOPinWrite(GPIO_PORTD_BASE, GPIO_PIN_3, 4);
+				    GPIOPinWrite(GPIO_PORTB_BASE,GPIO_PIN_3 | GPIO_PIN_2, 0x04);
 				break;
 				default:
 				break;
@@ -138,10 +135,10 @@ void DC_Motor_Stop(uint32_t Channel)
 	switch(Channel)
 	{
 		case DC_MOTOR_CHANNEL_0 :
-		    GPIOPinWrite(GPIO_PORTD_BASE,GPIO_PIN_2 | GPIO_PIN_0, 0x00);
+		    GPIOPinWrite(GPIO_PORTB_BASE,GPIO_PIN_1 | GPIO_PIN_0, 0x00);
 		    break;
 		case DC_MOTOR_CHANNEL_1 : 
-		    GPIOPinWrite(GPIO_PORTD_BASE,GPIO_PIN_3 | GPIO_PIN_1, 0x00);
+		    GPIOPinWrite(GPIO_PORTB_BASE,GPIO_PIN_3 | GPIO_PIN_2, 0x00);
 		    break;
 		default:
 		    break;

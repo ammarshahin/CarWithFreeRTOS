@@ -9,7 +9,6 @@ Ecual/Dc_Motor/src/DC_Motor.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LT
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_stdint.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/_stdint.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdbool.h
-Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWM_t.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/tm4c123gh6pm.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_memmap.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h
@@ -29,6 +28,7 @@ Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmwar
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/list.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/pin_map.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_gpio.h
+Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWMCar.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Dc_Motor/inc/DC_Motor.h
 Ecual/Dc_Motor/src/DC_Motor.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Comand/inc/Typedefs.h
 
@@ -41,7 +41,6 @@ C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_types.h:
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/_stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdbool.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWM_t.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/tm4c123gh6pm.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_memmap.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h: 
@@ -61,5 +60,6 @@ C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/task.h:
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/list.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/pin_map.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_gpio.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWMCar.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Dc_Motor/inc/DC_Motor.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Comand/inc/Typedefs.h: 

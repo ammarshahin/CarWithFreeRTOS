@@ -1,6 +1,7 @@
 # FIXED
 
 App/CarControl/src/CarControl.obj: ../App/CarControl/src/CarControl.c
+App/CarControl/src/CarControl.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWMCar.h
 App/CarControl/src/CarControl.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdint.h
 App/CarControl/src/CarControl.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/stdint.h
 App/CarControl/src/CarControl.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/cdefs.h
@@ -34,6 +35,7 @@ App/CarControl/src/CarControl.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Coman
 App/CarControl/src/CarControl.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/App/CarControl/inc/CarControl.h
 
 ../App/CarControl/src/CarControl.c: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWMCar.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/cdefs.h: 

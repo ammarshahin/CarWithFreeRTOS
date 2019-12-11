@@ -1,7 +1,6 @@
 # FIXED
 
 App/testApp/src/Tasks.obj: ../App/testApp/src/Tasks.c
-App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWM_t.h
 App/testApp/src/Tasks.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdint.h
 App/testApp/src/Tasks.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/stdint.h
 App/testApp/src/Tasks.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/cdefs.h
@@ -17,6 +16,7 @@ App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/interrupt.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/gpio.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/timer.h
+App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/PWM.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/FreeRTOS.h
 App/testApp/src/Tasks.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stddef.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/FreeRTOSConfig.h
@@ -31,9 +31,12 @@ App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/App/testApp/i
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/pin_map.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_gpio.h
 App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/App/CarControl/inc/CarControl.h
+App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Lcd/inc/LCD.h
+App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Ultrasonic/inc/Ultrasonic.h
+App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Comand/inc/Std_Types.h
+App/testApp/src/Tasks.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Ultrasonic/inc/UltrasonicCfg.h
 
 ../App/testApp/src/Tasks.c: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/PWM/inc/PWM_t.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/cdefs.h: 
@@ -49,6 +52,7 @@ C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/sysctl.h:
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/interrupt.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/gpio.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/timer.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/PWM.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/FreeRTOS.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stddef.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Firmware/FreeRtos/inc/FreeRTOSConfig.h: 
@@ -63,3 +67,7 @@ C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/App/testApp/inc/Tasks.h:
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/driverlib/pin_map.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_gpio.h: 
 C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/App/CarControl/inc/CarControl.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Lcd/inc/LCD.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Ultrasonic/inc/Ultrasonic.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Comand/inc/Std_Types.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Ecual/Ultrasonic/inc/UltrasonicCfg.h: 
