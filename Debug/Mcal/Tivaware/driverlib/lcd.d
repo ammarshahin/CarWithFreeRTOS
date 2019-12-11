@@ -9,10 +9,10 @@ Mcal/Tivaware/driverlib/lcd.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LT
 Mcal/Tivaware/driverlib/lcd.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_stdint.h
 Mcal/Tivaware/driverlib/lcd.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/_stdint.h
 Mcal/Tivaware/driverlib/lcd.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdbool.h
-Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_memmap.h
-Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h
-Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_ints.h
-Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_lcd.h
+Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_memmap.h
+Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_types.h
+Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_ints.h
+Mcal/Tivaware/driverlib/lcd.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_lcd.h
 Mcal/Tivaware/driverlib/lcd.obj: ../Mcal/Tivaware/driverlib/interrupt.h
 Mcal/Tivaware/driverlib/lcd.obj: ../Mcal/Tivaware/driverlib/sysctl.h
 Mcal/Tivaware/driverlib/lcd.obj: ../Mcal/Tivaware/driverlib/lcd.h
@@ -27,10 +27,10 @@ C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_types.h:
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/machine/_stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/sys/_stdint.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/stdbool.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_memmap.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_ints.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_lcd.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_memmap.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_types.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_ints.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_lcd.h: 
 ../Mcal/Tivaware/driverlib/interrupt.h: 
 ../Mcal/Tivaware/driverlib/sysctl.h: 
 ../Mcal/Tivaware/driverlib/lcd.h: 

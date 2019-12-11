@@ -5,7 +5,7 @@
 your application. */
 
 
-#define configUSE_PREEMPTION                    0
+#define configUSE_PREEMPTION                    1
 #define configUSE_PORT_OPTIMISED_TASK_SELECTION 0
 #define configUSE_TICKLESS_IDLE                 0
 #define configCPU_CLOCK_HZ                      16000000

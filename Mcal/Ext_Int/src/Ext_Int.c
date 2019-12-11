@@ -32,7 +32,7 @@ void ExtInt_Init(void)
     * level interrupt handler for all the pin interrupts.
 */
 
-   GPIOIntRegister(GPIO_PORTA_BASE, PortAIntHandler);
+   GPIOIntRegister(GPIO_PORTF_BASE, PortAIntHandler);
 /*
 
     Initialize the GPIO pin configuration.
@@ -40,24 +40,24 @@ void ExtInt_Init(void)
     * Set pins 2, 4, and 5 as input, SW controlled.
 */
 
-   GPIOPinTypeGPIOInput(GPIO_PORTA_BASE, GPIO_PIN_2 );
+   GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4 );
 
    //
    // Make pins 2 and 4 rising edge triggered interrupts.
    //
-   GPIOIntTypeSet(GPIO_PORTA_BASE, GPIO_PIN_2 , GPIO_RISING_EDGE);
+   GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_4 , GPIO_RISING_EDGE);
 
 
 
    /* Enable the pin interrupts. -------------------------------*/
 
-   GPIOIntEnable(GPIO_PORTA_BASE, GPIO_PIN_2);
+   GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_4);
 }
 
 
 void PortAIntHandler(void)
 {
-    GPIOIntClear(GPIO_PORTA_BASE, GPIO_PIN_2);
+    GPIOIntClear(GPIO_PORTF_BASE, GPIO_PIN_4);
     ptr();
 
 }

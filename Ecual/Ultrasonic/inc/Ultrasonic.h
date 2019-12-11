@@ -45,6 +45,6 @@ void triggerUltrasonic(void);
  * Return : Distance calculated
  */
 
-uint32 calculateDistance(void);
+uint32_t calculateDistance(void);
 
 #endif /* ULTRASONIC_H_ */

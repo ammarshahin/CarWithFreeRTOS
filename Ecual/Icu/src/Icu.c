@@ -40,7 +40,7 @@ void startCalculationIcu(void)
 
         flag = 1;
 
-        GPIOIntTypeSet(GPIO_PORTA_BASE, GPIO_PIN_2 , GPIO_FALLING_EDGE);
+        GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_4 , GPIO_FALLING_EDGE);
     }
 
     else if(flag == 1)
@@ -57,7 +57,7 @@ void startCalculationIcu(void)
         }
 
         flag = 0;
-        GPIOIntTypeSet(GPIO_PORTA_BASE, GPIO_PIN_2 , GPIO_RISING_EDGE);
+        GPIOIntTypeSet(GPIO_PORTF_BASE, GPIO_PIN_4 , GPIO_RISING_EDGE);
 
     }
 }
@@ -89,5 +89,5 @@ void SwICU_Read(uint32 *Reading_value)
 
 void ICU_Enable(void)
 {
-    GPIOIntEnable(GPIO_PORTA_BASE, GPIO_PIN_2 | GPIO_PIN_4 | GPIO_PIN_5);
+    GPIOIntEnable(GPIO_PORTF_BASE, GPIO_PIN_4);
 }

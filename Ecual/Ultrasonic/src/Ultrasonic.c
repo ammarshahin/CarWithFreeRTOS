@@ -39,7 +39,7 @@ void triggerUltrasonic(void)
 
 /*function to return number of counts which will be used to calculate the distance*/
 
-uint32 calculateDistance(void)
+uint32_t calculateDistance(void)
 {
 	uint32 Reading_value=0;
 	uint32 distance=0;

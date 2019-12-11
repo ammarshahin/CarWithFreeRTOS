@@ -14,10 +14,10 @@ Mcal/Tivaware/driverlib/hibernate.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.
 Mcal/Tivaware/driverlib/hibernate.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/linkage.h
 Mcal/Tivaware/driverlib/hibernate.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/abi_prefix.h
 Mcal/Tivaware/driverlib/hibernate.obj: C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/xlocale/_time.h
-Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_hibernate.h
-Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_ints.h
-Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_sysctl.h
-Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h
+Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_hibernate.h
+Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_ints.h
+Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_sysctl.h
+Mcal/Tivaware/driverlib/hibernate.obj: C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_types.h
 Mcal/Tivaware/driverlib/hibernate.obj: ../Mcal/Tivaware/driverlib/debug.h
 Mcal/Tivaware/driverlib/hibernate.obj: ../Mcal/Tivaware/driverlib/hibernate.h
 Mcal/Tivaware/driverlib/hibernate.obj: ../Mcal/Tivaware/driverlib/interrupt.h
@@ -37,10 +37,10 @@ C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/_ti_config.h:
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/linkage.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/abi_prefix.h: 
 C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.1.LTS/include/xlocale/_time.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_hibernate.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_ints.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_sysctl.h: 
-C:/Users/AVE-LAP-44/Desktop/CC\ Ws/Car0/Mcal/Tivaware/inc/hw_types.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_hibernate.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_ints.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_sysctl.h: 
+C:/Users/AVE-LAP-44/Desktop/CC\ Ws/CarProj/Mcal/Tivaware/inc/hw_types.h: 
 ../Mcal/Tivaware/driverlib/debug.h: 
 ../Mcal/Tivaware/driverlib/hibernate.h: 
 ../Mcal/Tivaware/driverlib/interrupt.h: 

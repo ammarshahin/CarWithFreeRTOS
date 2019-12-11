@@ -21,9 +21,9 @@
 /************************************************************************/
 /*						Extern Global variables  				        */
 /************************************************************************/
-extern TaskHandle_t Init_Task_Handle;
-extern TaskHandle_t Ultarsonic_Task_Handle;
-extern TaskHandle_t CarTaskLogic_Handle;
+extern  TaskHandle_t Init_Task_Handle;
+extern  TaskHandle_t Ultarsonic_Task_Handle;
+extern  TaskHandle_t CarTaskLogic_Handle;
 
 /************************************************************************/
 /*					      OS Tasks Implementations				        */

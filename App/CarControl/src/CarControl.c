@@ -30,10 +30,10 @@
 /************************************************************************/
 /*                         Macros and Defines                           */
 /************************************************************************/
-#define SLOW_SPEED 99
-#define NORMAL_SPEED 99
+#define SLOW_SPEED 50
+#define NORMAL_SPEED 50
 
-#define CAUTIOUS_DISTANCE 10
+#define COUTUS_DISTANCE 40
 #define DENGEROUS_DISTANCE 20
 /************************************************************************/
 /*                        Functions Definitions                         */
@@ -51,7 +51,7 @@ void Car_Init(void)
     DC_Motor_Init(DC_MOTOR_CHANNEL_0);
     DC_Motor_Init(DC_MOTOR_CHANNEL_1);
 
-    CarMove__Forward();
+    CarStop();
 }
 
 
@@ -60,22 +60,30 @@ void Car_Init(void)
  * Description: This function is to Implement the car logic 
  *  it Don't take any thing and returns nothing
  */
-void CarControlLogic( uint32_t ultrasonicDistanc)
+void CarControlLogic( uint32_t UltrasonicDistance)
 {
-    if ( (ultrasonicDistanc < CAUTIOUS_DISTANCE) && (ultrasonicDistanc > DENGEROUS_DISTANCE) )  /* Obstacle on the near range */
+    if( (UltrasonicDistance > DENGEROUS_DISTANCE) && (UltrasonicDistance < COUTUS_DISTANCE ))
+    {
+        CarStop();
+//                vTaskDelay(10);
+                DC_Motor_Set_Speed(SLOW_SPEED);
+                CarMove__RotateRight();
+                vTaskDelay(300);
+                //CarStop();
+                //vTaskDelay(10);
+    }
+    else if ( UltrasonicDistance < DENGEROUS_DISTANCE )  /* Obstacle on the near range */
 	{
-        CarMove__RotateRight();
-		DC_Motor_Set_Speed(SLOW_SPEED);
-	}
-	else if(ultrasonicDistanc < DENGEROUS_DISTANCE)  /* Obstacle is very near go back till an enough range to rotate */
-	{
-		CarMove__Backward();
-		DC_Motor_Set_Speed(SLOW_SPEED);
+        CarStop();
+//        vTaskDelay(10);
+        DC_Motor_Set_Speed(SLOW_SPEED);
+        CarMove__Backward();
+        vTaskDelay(200);
 	}
 	else
 	{
-	    CarMove__Forward();
 	    DC_Motor_Set_Speed(NORMAL_SPEED);
+	    CarMove__Forward();
 	}
 }
 

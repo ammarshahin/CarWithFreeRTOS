@@ -25,7 +25,7 @@
 #include "hw_gpio.h"
 #include "pin_map.h"
 #include "CarControl.h"
-#include "LCD.h"
+#include "LCD_t.h"
 #include "Ultrasonic.h"
 
 /************************************************************************/
@@ -36,9 +36,9 @@
 /************************************************************************/
 /*					      Global Variables						        */
 /************************************************************************/
- TaskHandle_t Init_Task_Handle;
- TaskHandle_t Ultarsonic_Task_Handle;
- TaskHandle_t CarTaskLogic_Handle;
+  TaskHandle_t Init_Task_Handle;
+  TaskHandle_t Ultarsonic_Task_Handle;
+  TaskHandle_t CarTaskLogic_Handle;
 
  volatile uint32_t ultrasonicDistanc;
 /************************************************************************/
@@ -51,15 +51,21 @@
  */
  void Init_Task(void* pvParameters)
 {
+     vTaskSuspend(CarTaskLogic_Handle);
+     vTaskSuspend(Ultarsonic_Task_Handle);
+
      SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
      SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
-     //LCD_init();
+
      initializeUltraSonic();
      Car_Init();
+     LCD_init();
 
-     //GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1 | GPIO_PIN_2 | GPIO_PIN_3); // Debug Led
+     vTaskResume(CarTaskLogic_Handle);
+     vTaskResume(Ultarsonic_Task_Handle);
 
-    vTaskSuspend(Init_Task_Handle);
+
+     vTaskSuspend(Init_Task_Handle);
 
     while(true)
     {
@@ -78,7 +84,7 @@
      while(1)
      {
          CarControlLogic(ultrasonicDistanc);
-         vTaskDelay(200);
+         vTaskDelay(55);
      }
 }
 
@@ -89,7 +95,16 @@
      {
          triggerUltrasonic();
          ultrasonicDistanc = calculateDistance();
-         LCD_DisplayNumber(ultrasonicDistanc);
+         if( ultrasonicDistanc > 100 )
+         {
+             ultrasonicDistanc = 99;
+         }
+         else
+         {
+             //Do Nothing
+         }
+         LCD_clearScreen();
+         LCD_intgerToString(ultrasonicDistanc);
          vTaskDelay(100);
      }
  }

@@ -28,7 +28,7 @@
 /************************************************************************/
 /*                           Macros and Defines                         */
 /************************************************************************/
-#define MAX_VALUE_PWM   2000
+#define MAX_VALUE_PWM   5000
 #define ONE_HUNDERD     100
 
 /************************************************************************/
@@ -44,7 +44,7 @@
 void PWM_Init(void)
 {
 	//Configure PWM Clock to match system
-      SysCtlPWMClockSet(SYSCTL_PWMDIV_16);
+      SysCtlPWMClockSet(SYSCTL_PWMDIV_64);
 
       //Enable the peripherals used by this program.
        SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOF);
@@ -84,12 +84,12 @@ void PWM_SetDutyCycle( uint32_t dutycycle )
     uint32_t WidthSetValue = (MAX_VALUE_PWM * dutycycle) / ONE_HUNDERD;
 	
 	
-	//Set the Period (expressed in clock ticks)
+	   //Set the Period (expressed in clock ticks)
        PWMGenPeriodSet(PWM1_BASE, PWM_GEN_1, MAX_VALUE_PWM);
        PWMGenPeriodSet(PWM1_BASE, PWM_GEN_2, MAX_VALUE_PWM);
        PWMGenPeriodSet(PWM1_BASE, PWM_GEN_3, MAX_VALUE_PWM);
 
-       //Set PWM duty-50% (Period /2)
+       //Set PWM duty
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_5, WidthSetValue);
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_6, WidthSetValue);
        PWMPulseWidthSet(PWM1_BASE, PWM_OUT_7, WidthSetValue);
