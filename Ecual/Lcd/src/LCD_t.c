@@ -81,7 +81,7 @@ static void LCD_sendCommand(uint8_t command)
 
 /**
  * Description: This function is used for Displaying a number on the LCD
- * @param num : the Number to be dispalyed
+ * @param num : the Number to be displayed
  * @param buffer : A pointer to the Buffer
  * Return : void
  */
@@ -115,7 +115,7 @@ static void intToString(uint32_t num ,char *buffer,uint8_t base )
  *******************************************************************************/
 /**
  * Description: This function is used for Displaying Char on the LCD.
- * @param data : the Data to be dispalyed
+ * @param data : the Data to be displayed
  * Return : void
  */
 void LCD_displayCharacter(uint8_t data)
@@ -180,7 +180,7 @@ void LCD_init (void)
 
 /**
  * Description: This function is used for Displaying a string on the LCD.
- * @param data : the Data to be dispalyed
+ * @param data : the Data to be displayed
  * Return : void
  */
 void LCD_displayString(const char *Str)
@@ -194,10 +194,10 @@ void LCD_displayString(const char *Str)
 }
 
 /**
- * Description: This function is used for Displaying a string on the LCD at a spacfic locatiocn
- * @param row : the row to be dispalyed at
- * @param col : the column to be dispalyed at
- * @param Str : A pointer to the String of the Data to be dispalyed
+ * Description: This function is used for Displaying a string on the LCD at a specific location
+ * @param row : the row to be displayed at
+ * @param col : the column to be displayed at
+ * @param Str : A pointer to the String of the Data to be displayed
  * Return : void
  */
 void LCD_displayStringRowColumn(uint8_t row,uint8_t col, char* Str)

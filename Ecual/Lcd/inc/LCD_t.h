@@ -36,23 +36,23 @@ void LCD_init (void);
 
 /**
  * Description: This function is used for Displaying Char on the LCD.
- * @param data : the Data to be dispalyed
+ * @param data : the Data to be displayed
  * Return : void
  */
 void LCD_displayCharacter(uint8_t data);
 
 /**
  * Description: This function is used for Displaying a string on the LCD.
- * @param data : the Data to be dispalyed
+ * @param data : the Data to be displayed
  * Return : void
  */
 void LCD_displayString(const char *Str);
 
 /**
- * Description: This function is used for Displaying a string on the LCD at a spacfic locatiocn
- * @param row : the row to be dispalyed at
- * @param col : the column to be dispalyed at
- * @param Str : A pointer to the String of the Data to be dispalyed
+ * Description: This function is used for Displaying a string on the LCD at a specific location
+ * @param row : the row to be displayed at
+ * @param col : the column to be displayed at
+ * @param Str : A pointer to the String of the Data to be displayed
  * Return : void
  */
 void LCD_displayStringRowColumn(uint8_t row,uint8_t col, char* Str);
