@@ -31,8 +31,9 @@
 /************************************************************************/
 /*								Defines  						        */
 /************************************************************************/
-#define  TASK_DELAY_SYSTICK 1000
-
+#define  CarTaskLogic_DELAY_SYSTICK   55
+#define  UltrasonicTask_DELAY_SYSTICK 50
+#define  DEFAULT_LCD_VALUE            99
 /************************************************************************/
 /*					      Global Variables						        */
 /************************************************************************/
@@ -40,7 +41,7 @@
   TaskHandle_t Ultarsonic_Task_Handle;
   TaskHandle_t CarTaskLogic_Handle;
 
- volatile uint32_t ultrasonicDistanc;
+
 /************************************************************************/
 /*					      OS Tasks Implementations				        */
 /************************************************************************/
@@ -80,31 +81,34 @@
  */
  void CarTaskLogic(void* pvParameters)
 {
-
-     while(1)
+     uint32_t ultrasonicDistanc = false;
+     while(true)
      {
+         UltrasonicGetDistanc(&ultrasonicDistanc);
          CarControlLogic(ultrasonicDistanc);
-         vTaskDelay(55);
+         vTaskDelay(CarTaskLogic_DELAY_SYSTICK);
      }
 }
 
 
  void UltrasonicTask(void* pvParameters)
  {
+     uint32_t ultrasonicDistanc = false;
      while(true)
      {
          triggerUltrasonic();
          ultrasonicDistanc = calculateDistance();
-         if( ultrasonicDistanc > 100 )
+         if( ultrasonicDistanc > DEFAULT_LCD_VALUE )
          {
-             ultrasonicDistanc = 99;
+             ultrasonicDistanc = DEFAULT_LCD_VALUE;
          }
          else
          {
              //Do Nothing
          }
+         UltrasonicSetDistanc(ultrasonicDistanc);
          LCD_clearScreen();
          LCD_intgerToString(ultrasonicDistanc);
-         vTaskDelay(100);
+         vTaskDelay(UltrasonicTask_DELAY_SYSTICK);
      }
  }

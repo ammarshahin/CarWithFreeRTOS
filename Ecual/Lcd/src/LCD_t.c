@@ -3,7 +3,7 @@
  * lcd.c
  *
  *  Created on: Nov 30, 2019
- *      Author: Osman
+ *      Author: Ammar Shahin
  */
 
 /*******************************************************************************
@@ -43,96 +43,112 @@
 #define INIT_CONTROL_TWO			0x32
 
 
+#define LCD_DELAY_SYSTICK 1
+
+/*******************************************************************************
+ *                      Private FUNCTIONS DEFINITION         	                   *
+ *******************************************************************************/
+/**
+ * Description: This function is used for Sending the command to the LCD.
+ * @param command : the command
+ * Return : void
+ */
+static void LCD_sendCommand(uint8_t command)
+{
+    GPIOPinWrite(GPIO_PORTA_BASE, RW|RS,false);
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,(command & LAST_HALF_MASK));
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,((command & MASK_FIRST_BITS)<<4));
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
+    GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
+    vTaskDelay(LCD_DELAY_SYSTICK);
+}
+
+
+
+/**
+ * Description: This function is used for Displaying a number on the LCD
+ * @param num : the Number to be dispalyed
+ * @param buffer : A pointer to the Buffer
+ * Return : void
+ */
+static void intToString(uint32_t num ,char *buffer,uint8_t base )
+{
+
+   uint8_t index = false,temp,i;
+
+   while(num)
+   {
+
+       buffer[index++]= num % base+ 0x30;
+       num /=base;
+
+   }
+
+   buffer[index]=0;
+
+   for(i=0;i< index/2;i++)
+   {
+       temp=buffer[i];
+       buffer[i]=buffer[index-i-1] ;
+       buffer[index-i-1]   = temp ;
+   }
+
+}
 
 
 /*******************************************************************************
- *                    		 FUNCTION DEFINITION          	                   *
+ *                      API FUNCTIONS DEFINITION                               *
  *******************************************************************************/
-static void delayUS(uint32_t ms)
-{
-   SysCtlDelay((SysCtlClockGet()/(3*1000000))*ms );
-}
-
-/*
-	 * Function: LCD_sendCommand.
-	 *
-	 * @definition:Send a rewuired comman to the LCD.
-	 *
-	 * @param	Name		: Command
-	 *			Type        : uint8_t
-	 *			DESC		: Sending the command to the LCD.
-	 *
-	 *
-	 @return: void.
-	 *
-	 */
-void LCD_sendCommand(uint8_t command)
-{
-
-
-    GPIOPinWrite(GPIO_PORTA_BASE, RW|RS,false);
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,(command & LAST_HALF_MASK));
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,((command & MASK_FIRST_BITS)<<4));
-    delayUS(1000);
-    GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
-    delayUS(1000);
-}
-
-/*
-	 * Function: LCD_displayCharacter.
-	 *
-	 * @definition: Displays a Character on the LCD.
-	 *
-	 * @param	Name		: data
-	 *			Type        : uint8_t
-	 *			DESC		: Sending the Character..
-	 *
-	 *
-	 @return: void.
-	 *
-	 */
-
+/**
+ * Description: This function is used for Displaying Char on the LCD.
+ * @param data : the Data to be dispalyed
+ * Return : void
+ */
 void LCD_displayCharacter(uint8_t data)
 {
 
        GPIOPinWrite(GPIO_PORTA_BASE, RS,0x04);
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,(data&LAST_HALF_MASK));
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,((data&MASK_FIRST_BITS)<<4));
-       delayUS(1000);
-       GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
-       delayUS(1000);
+       vTaskDelay(LCD_DELAY_SYSTICK);
 
+       GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
+       vTaskDelay(LCD_DELAY_SYSTICK);
+
+       GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,(data&LAST_HALF_MASK));
+       vTaskDelay(LCD_DELAY_SYSTICK);
+
+       GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
+       vTaskDelay(LCD_DELAY_SYSTICK);
+
+       GPIOPinWrite(GPIO_PORTA_BASE, EN,EN);
+       vTaskDelay(LCD_DELAY_SYSTICK);
+
+       GPIOPinWrite(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7,((data&MASK_FIRST_BITS)<<4));
+       vTaskDelay(LCD_DELAY_SYSTICK);
+
+       GPIOPinWrite(GPIO_PORTA_BASE, EN,false);
+       vTaskDelay(LCD_DELAY_SYSTICK);
 }
 
-/*
-	 * Function: LCD_init.
-	 *
-	 * @definition:Initialize the LCD.
-	 *
-	 * @param:void
-	 *
-	 *
-	 * @return: void.
-	 *
-	 */
 
-
+/**
+ * Description: This function is used to init the LCD Module.
+ * @param : void
+ * Return : void
+ */
 void LCD_init (void)
 {
 
@@ -142,63 +158,48 @@ void LCD_init (void)
     GPIOPinTypeGPIOOutput(GPIO_PORTA_BASE, RS|RW|EN);
     GPIOPinTypeGPIOOutput(GPIO_PORTC_BASE, GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7);
 
-    delayUS(1000);						/* LCD Power ON delay always >15ms */
+    vTaskDelay(LCD_DELAY_SYSTICK);						/* LCD Power ON delay always >15ms */
+
     LCD_sendCommand(INIT_CONTROL);
     LCD_sendCommand(INIT_CONTROL_TWO);		    	/* send for 4 bit initialization of LCD  */
     LCD_sendCommand(FOUR_BIT_MDOE);              	/* Use 2 line and initialize 5*7 matrix in (4-bit mode)*/
     LCD_sendCommand(CURSOR_OFF);              	    /* Display on cursor off*/
     LCD_sendCommand(ENTRY_MODE);
-    delayUS(1000);                        /* Increment cursor (shift cursor to right)*/
+
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
     LCD_sendCommand(CLEAR_SCREEN);              	/* Clear display screen*/
-    delayUS(1000);
+
+    vTaskDelay(LCD_DELAY_SYSTICK);
+
     LCD_sendCommand (CURSOR_AT_BEGINNING);
-    delayUS(1000);
+
+    vTaskDelay(LCD_DELAY_SYSTICK);
 }
 
 
-/*
-	 * Function: LCD_displayString.
-	 *
-	 * @definition: Displays a String on the LCD.
-	 *
-	 * @param	Name		: Str
-	 *			Type        : uint8_t *
-	 *			DESC		: Sending an Array of Characters..
-	 *
-	 *
-	 @return: void.
-	 *
-	 */
+/**
+ * Description: This function is used for Displaying a string on the LCD.
+ * @param data : the Data to be dispalyed
+ * Return : void
+ */
 void LCD_displayString(const char *Str)
 {
-	int string_Counter ;
-	for(string_Counter = false; Str[string_Counter] != '\0'; string_Counter++)
+	int string_Counter = false;
+	while(Str[string_Counter])
 	{
 		LCD_displayCharacter(Str[string_Counter]);
+		string_Counter++;
 	}
 }
 
-/*
-	 * Function: LCD_displayStringRowColumn.
-	 *
-	 * @definition: Function to Create A task.
-	 *
-	 * @param	Name		: row
-	 *			Type        : uint8_t
-	 *			DESC		: Determines the required Row.
-	 *
-	 * @param	Name		: col
-	 *			Type        : uint8_t
-	 *			DESC		: Determines the required Col.
-	 *
-	 * @param	Name		: Str
-	 *			Type        : uint8_t*
-	 *			DESC		: Sending An Array of Characters.
-	 *
-	 @return: void
-	 *
-	 */
-
+/**
+ * Description: This function is used for Displaying a string on the LCD at a spacfic locatiocn
+ * @param row : the row to be dispalyed at
+ * @param col : the column to be dispalyed at
+ * @param Str : A pointer to the String of the Data to be dispalyed
+ * Return : void
+ */
 void LCD_displayStringRowColumn(uint8_t row,uint8_t col, char* Str)
 {
 	if (row == false && col<DIGIT_LIMIT)
@@ -218,52 +219,26 @@ void LCD_displayStringRowColumn(uint8_t row,uint8_t col, char* Str)
 }
 
 
-LCD_DisplayNumber(uint8_t Number)
-{
-    }
-
-
-/*
- * Function: LCD_clearScreen.
- *
- * @definition: Clear the Screen.
- *
- * @param:void
- *
- *
- * @return: void.
- *
+/**
+ * Description: This function is used for Displaying a number on the LCD
+ * @param data : the data to be displayed
+ * Return : void
  */
-void LCD_clearScreen(void)
-{
-	LCD_sendCommand (CLEAR_SCREEN);
-	delayUS(1000);
-}
 
-void intToString(uint32_t num ,char *buffer,uint8_t base )
-{
-
-   uint8_t index=0,temp,i;
-
-   while(num !=0)
-   {
-
-       buffer[index++]= num % base+ 0x30;
-       num /=base;
-
-   }
-   buffer[index]=0;
-   for(i=0;i< index/2;i++)
-   {
-       temp=buffer[i];
-       buffer[i]=buffer[index-i-1] ;
-       buffer[index-i-1]   = temp ;
-   }
-
-}
 void LCD_intgerToString(unsigned int data)
 {
   char buff[16]; /* String to hold the ascii result */
   intToString(data,buff,10); /* 10 for decimal */
   LCD_displayString(buff);
+}
+
+
+/**
+ * Description: This function is used for clearing the LCD
+ * Return : void
+ */
+void LCD_clearScreen(void)
+{
+	LCD_sendCommand (CLEAR_SCREEN);
+	vTaskDelay(LCD_DELAY_SYSTICK);
 }

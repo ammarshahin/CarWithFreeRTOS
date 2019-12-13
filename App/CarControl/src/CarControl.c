@@ -35,10 +35,12 @@
 
 #define COUTUS_DISTANCE 40
 #define DENGEROUS_DISTANCE 20
+
+#define SMALL_DELAY 50
+#define LARGE_DELAY 100
 /************************************************************************/
 /*                        Functions Definitions                         */
 /************************************************************************/
-
 /**
  * Function : Car_Init
  * Description: This function is to initialize the car 
@@ -65,20 +67,19 @@ void CarControlLogic( uint32_t UltrasonicDistance)
     if( (UltrasonicDistance > DENGEROUS_DISTANCE) && (UltrasonicDistance < COUTUS_DISTANCE ))
     {
         CarStop();
-//                vTaskDelay(10);
-                DC_Motor_Set_Speed(SLOW_SPEED);
-                CarMove__RotateRight();
-                vTaskDelay(300);
-                //CarStop();
-                //vTaskDelay(10);
+        vTaskDelay(SMALL_DELAY);
+        DC_Motor_Set_Speed(SLOW_SPEED);
+        CarMove__RotateRight();
+        vTaskDelay(LARGE_DELAY);
+
     }
     else if ( UltrasonicDistance < DENGEROUS_DISTANCE )  /* Obstacle on the near range */
 	{
         CarStop();
-//        vTaskDelay(10);
+        vTaskDelay(SMALL_DELAY);
         DC_Motor_Set_Speed(SLOW_SPEED);
         CarMove__Backward();
-        vTaskDelay(200);
+        vTaskDelay(LARGE_DELAY);
 	}
 	else
 	{

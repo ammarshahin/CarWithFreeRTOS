@@ -1,8 +1,8 @@
 /*
  * Icu.h
  *
- * Created: 11/9/2019 8:08:14 PM
- *  Author: AVE-LAP-025
+ * Created: 11/12/2019 
+ *  Author: Diana Atef
  */ 
 
 /**
@@ -14,17 +14,15 @@
 #ifndef ICU_H_
 #define ICU_H_
 
+/*******************************************************************************
+ *                                  INCLUDES                                   *
+ *******************************************************************************/
 #include "Std_Types.h"
 
-void delayUS(uint32 ms);
+/*******************************************************************************
+ *                                  Prototypes                                  *
+ *******************************************************************************/
 
-void CallBack(void (*ptr1)(void));
-
-void startCalculationIcu(void);
-
-void Timer0Isr(void);
-
-void PortAIntHandler(void);
 /*
  * Description:
  * This function initializes the ICU module 
@@ -42,5 +40,12 @@ void SwICU_Read(uint32 *Reading_value);
 
 void ICU_Enable(void);
 
+void CallBack(void (*ptr1)(void));
+
+void startCalculationIcu(void);
+
+void Timer0Isr(void);
+
+void PortAIntHandler(void);
 
 #endif /* ICU_H_ */

@@ -30,7 +30,7 @@ int main(void)
        SysCtlClockSet(SYSCTL_SYSDIV_1|SYSCTL_USE_OSC|SYSCTL_OSC_INT);
 
        uint32_t x= SysCtlClockGet();
-       BaseType_t xReturned = 0;
+       BaseType_t xReturned = false;
 
         xReturned = xTaskCreate(Init_Task,
         "Initialization Task",

@@ -10,6 +10,9 @@
 #ifndef ULTRASONICCFG_H_
 #define ULTRASONICCFG_H_
 
+/************************************************************************/
+/*                            Configritions                             */
+/************************************************************************/
 #define ULTRASONIC_TRIGGER_PORT        GPIO_PORTA_BASE
 #define ULTRASONIC_TRIGGER_PIN         GPIO_PIN_7
 

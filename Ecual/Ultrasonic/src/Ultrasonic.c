@@ -1,9 +1,13 @@
 /*
  * Ultrasonic.c
  *
- * Created: 11/9/2019 8:08:56 PM
- *  Author: AVE-LAP-025
+ * Created: 11/12/2019
+ *  Author: Diana Atef
  */ 
+
+/************************************************************************/
+/*                              INCLUDES                                */
+/************************************************************************/
 #include <stdint.h>
 #include <stdbool.h>
 #include "tm4c123gh6pm.h"
@@ -16,11 +20,24 @@
 #include "Ultrasonic.h"
 #include "Icu.h"
 
-void delayUS(uint32 ms)
-{
-   SysCtlDelay( (SysCtlClockGet()/(3*1000000))*ms );
-}
+/************************************************************************/
+/*                            Macros                                    */
+/************************************************************************/
+#define DISTANCE_FACTOR  17000
+#define SYSCTL_DELAY_MS_FACTOR (3*1000000)
+#define SYSCTL_DELAY      15
 
+#define ULTRASONIC_TRIGGER_PIN_MASK1 0x80
+#define ULTRASONIC_TRIGGER_PIN_MASK2 0x00
+
+/************************************************************************/
+/*                         Global variables                             */
+/************************************************************************/
+volatile uint32_t UltrasonicDistanc;
+
+/************************************************************************/
+/*                     Functions Implementations                        */
+/************************************************************************/
 /*initialize the ultrasonic */
 void initializeUltraSonic(void)
 {
@@ -32,18 +49,28 @@ void initializeUltraSonic(void)
 
 void triggerUltrasonic(void)
 {
-    GPIOPinWrite(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_TRIGGER_PIN, 0x80);
-    delayUS(15);
-	GPIOPinWrite(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_TRIGGER_PIN, 0x00);
+    GPIOPinWrite(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_TRIGGER_PIN, ULTRASONIC_TRIGGER_PIN_MASK1);
+    vTaskDelay(SYSCTL_DELAY);
+	GPIOPinWrite(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_TRIGGER_PIN, ULTRASONIC_TRIGGER_PIN_MASK2);
 }
 
 /*function to return number of counts which will be used to calculate the distance*/
 
 uint32_t calculateDistance(void)
 {
-	uint32 Reading_value=0;
-	uint32 distance=0;
+	uint32 Reading_value = false;
+	uint32 distance = false;
 	SwICU_Read(&Reading_value);
-	distance = (Reading_value / (double)SysCtlClockGet()) * 17000;
+	distance = (Reading_value / (double)SysCtlClockGet()) * DISTANCE_FACTOR;
 	return distance;
+}
+
+void UltrasonicGetDistanc(uint32_t* pUltrasonicDistanc)
+{
+    *pUltrasonicDistanc = UltrasonicDistanc;
+}
+
+void UltrasonicSetDistanc(uint32_t pUltrasonicDistanc)
+{
+    UltrasonicDistanc = pUltrasonicDistanc;
 }
